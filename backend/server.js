@@ -36,6 +36,8 @@ app.use("/api/notifications", notificationRoutes);
 
 	app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
+	app.use('/assets',express.static(path.join(__dirname, "/frontend/dist/assets")));
+
 
 
 	app.get('/serviceWorker.js', (req, res) => {
@@ -43,6 +45,8 @@ app.use("/api/notifications", notificationRoutes);
 			res.sendFile(path.resolve(__dirname, "frontend", "serviceWorker.js"));
 	
 		  });
+		  
+
 
 	app.get("*", (req, res) => {
 		res.sendFile(path.resolve(__dirname, "frontend",'dist', "index.html"));
