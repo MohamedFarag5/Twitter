@@ -13,6 +13,7 @@ import { formatPostDate } from "../../utils/date";
 
 const Post = ({ post }) => {
 	const [comment, setComment] = useState("");
+
 	const { data: authUser } = useQuery({ queryKey: ["authUser"] });
 	const queryClient = useQueryClient();
 	const postOwner = post.user;
@@ -39,7 +40,6 @@ const Post = ({ post }) => {
 			}
 		},
 		onSuccess: () => {
-			toast.success("Post deleted successfully");
 			queryClient.invalidateQueries({ queryKey: ["posts"] });
 		},
 	});
@@ -78,7 +78,7 @@ const Post = ({ post }) => {
 		},
 	});
 
-	const { mutate: commentPost, isPending: isCommenting } = useMutation({
+	const { mutate: commentPost, isPending: isCommenting ,Refetch} = useMutation({
 		mutationFn: async () => {
 			try {
 				const res = await fetch(`/api/posts/comment/${post._id}`, {
@@ -98,10 +98,18 @@ const Post = ({ post }) => {
 				throw new Error(error);
 			}
 		},
-		onSuccess: () => {
-			toast.success("Comment posted successfully");
+		onSuccess: (comments) => {
 			setComment("");
-			queryClient.invalidateQueries({ queryKey: ["posts"] });
+			console.log("comments",comments);
+			queryClient.setQueryData(["posts"], (oldData) => {
+				return oldData.map((p) => {
+					if (p._id === post._id) {
+						console.log("comments-p",p);
+						return { ...p, comments: [...comments] };
+					}
+					return p;
+				});
+			});
 		},
 		onError: (error) => {
 			toast.error(error.message);
@@ -136,7 +144,7 @@ const Post = ({ post }) => {
 						<Link to={`/profile/${postOwner.username}`} className='font-bold'>
 							{postOwner.fullName}
 						</Link>
-						<span className='text-gray-700 flex gap-1 text-sm'>
+						<span className='text-white-200 flex gap-2 text-md'>
 							<Link to={`/profile/${postOwner.username}`}>@{postOwner.username}</Link>
 							<span>·</span>
 							<span>{formattedDate}</span>
@@ -156,7 +164,7 @@ const Post = ({ post }) => {
 						{post.img && (
 							<img
 								src={post.img}
-								className='h-80 object-contain rounded-lg border border-gray-700'
+								className='h-80 object-cover rounded-lg border border-gray-700'
 								alt=''
 							/>
 						)}

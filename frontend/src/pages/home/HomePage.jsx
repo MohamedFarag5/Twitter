@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Posts from "../../components/common/Posts";
 import CreatePost from "./CreatePost";
+import TopPanel from "../../components/common/TopPanel";
+import { useWindowSize } from "react-use";
 
 const HomePage = () => {
 	const [feedType, setFeedType] = useState("forYou");
-
+      
+	  
 	return (
 		<>
-			<div className='flex-[4_4_0] mr-auto border-r border-gray-700 min-h-screen'>
+			<div className='flex-[4_4_0] mr-auto border-r border-gray-700 min-h-screen '>
 				{/* Header */}
+				<TopPanel/>
 				<div className='flex w-full border-b border-gray-700'>
 					<div
 						className={

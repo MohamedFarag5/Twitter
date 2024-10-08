@@ -26,6 +26,7 @@ const Posts = ({ feedType, username, userId }) => {
 		isLoading,
 		refetch,
 		isRefetching,
+		isFetching 
 	} = useQuery({
 		queryKey: ["posts"],
 		queryFn: async () => {
@@ -50,7 +51,7 @@ const Posts = ({ feedType, username, userId }) => {
 
 	return (
 		<>
-			{(isLoading || isRefetching) && (
+			{(isLoading || isFetching ) && (
 				<div className='flex flex-col justify-center'>
 					<PostSkeleton />
 					<PostSkeleton />
