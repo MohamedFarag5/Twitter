@@ -42,7 +42,8 @@ if (process.env.NODE_ENV === "production") {
 	});
 	app.get('/service-worker.js', (req, res) => {
 		res.setHeader('Content-Type', 'application/javascript');
-		res.sendFile(path.join(__dirname, '../frontend/serviceWorker.js'));
+		res.sendFile(path.resolve(__dirname, "frontend", "dist", "serviceWorker.js"));
+
 	  });
 }
 
