@@ -1,4 +1,4 @@
-const VERSION = "v3";
+const VERSION = "v1";
 // eslint-disable-next-line no-unused-vars
 const CACHE_NAME = `period-tracker-${VERSION}`;
 // eslint-disable-next-line no-unused-vars
@@ -28,7 +28,7 @@ self.addEventListener("install", (event) => {
           }),
         );
         // eslint-disable-next-line no-undef
-        // await clients.claim();
+        await clients.claim();
       })(),
     );
   });
