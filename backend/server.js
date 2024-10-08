@@ -40,7 +40,7 @@ app.use("/api/notifications", notificationRoutes);
 	app.get("*", (req, res) => {
 		res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
 	});
-	app.get('/service-worker.js', (req, res) => {
+	app.get('/serviceWorker.js', (req, res) => {
 		res.setHeader('Content-Type', 'application/javascript');
 		res.sendFile(path.resolve(__dirname, "frontend", "dist", "serviceWorker.js"));
 
