@@ -10,7 +10,6 @@ import toast from "react-hot-toast";
 
 const Sidebar = () => {
   const queryClient = useQueryClient();
-
   // eslint-disable-next-line no-mixed-spaces-and-tabs
 
   const { mutate: logout } = useMutation({

@@ -34,7 +34,6 @@ self.addEventListener("install", (event) => {
   });
 
 
-
   async function cacheFirst(request) {
     const cachedResponse = await caches.match(request);
     if (cachedResponse) {
@@ -58,3 +57,4 @@ self.addEventListener("install", (event) => {
       event.respondWith(cacheFirst(event.request));
     
   });
+
