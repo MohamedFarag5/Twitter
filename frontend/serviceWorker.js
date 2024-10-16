@@ -1,4 +1,4 @@
-const VERSION = "v9";
+const VERSION = "v1";
 // eslint-disable-next-line no-unused-vars
 const CACHE_NAME = `period-tracker-${VERSION}`;
 // eslint-disable-next-line no-unused-vars
@@ -39,7 +39,6 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(
       caches.open(CACHE_NAME).then(async (cache) => {
         const cacheRes = await cache.match(event.request);
-        console.log("cacheRes in offline mode", cacheRes);
 
         if (cacheRes) {
           return cacheRes;

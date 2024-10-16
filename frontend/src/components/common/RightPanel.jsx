@@ -29,7 +29,7 @@ const RightPanel = () => {
 
   return (
     <>
-      {suggestedUsers?.length === 0 ? (
+      {suggestedUsers?.length != 0 ? (
         <div className=" my-4 mx-2 hidden lg:block">
           <div className=" p-4 rounded-md sticky top-2">
             <p className="font-bold mb-7">Who to follow</p>
@@ -85,7 +85,7 @@ const RightPanel = () => {
       ) : (
         ""
       )}
-      :
+      
     </>
   );
 };
