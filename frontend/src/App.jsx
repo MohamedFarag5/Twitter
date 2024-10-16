@@ -40,6 +40,8 @@ function App() {
 			</div>
 		);
 	}
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+
 
 	return (
 		<div className='flex max-w-6xl mx-auto'>
