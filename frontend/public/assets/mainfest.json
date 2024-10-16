@@ -3,16 +3,16 @@
     "name": "Twitter social app",
     "icons": [
       {
-        "src": "./src/assets/favicon.ico",
+        "src": "favicon.ico",
         "type": "image/x-icon"
       },
       {
-        "src": "./src/assets/logo192.png",
+        "src": "logo192.png",
         "type": "image/png",
         "sizes": "192x192"
       },
       {
-        "src": "./src/assets/logo512.png",
+        "src": "logo512.png",
         "type": "image/png",
         "sizes": "512x512"
       }
